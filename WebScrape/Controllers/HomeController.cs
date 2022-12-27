@@ -43,8 +43,6 @@ namespace WebScrape.Controllers
 
             req.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36";
             req.Headers.Add("Accept-Language", "sr-RS,sr;q=0.8,en-US;q=0.5,en;q=0.3");
-            req.Headers.Add("Referer", "https://bakerhughesrigcount.gcs-web.com/intl-rig-count");
-            req.Headers.Add("traceparent", null);
             req.Headers.Add("Connection", "keep-alive");
 
             return req;
