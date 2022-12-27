@@ -1,7 +1,7 @@
 # Enverus-Excel-File-Download-ToCSV-App
 -This application was made as a solution to an interview question for Enverus 
 
--The whole solution to the problem is written in Controllers -> HomeController.cs 
+-The whole solution to the problem is written in WebScrape -> Controllers -> HomeController.cs 
 
 -The app is a .NET Web MVC application but for the purpose of this test a regular C#(.NET) console app would have sufficed as well
 
