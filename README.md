@@ -3,7 +3,7 @@
 
 -The whole solution to the problem is written in Controllers -> HomeController.cs 
 
--The app is a .NET Core MVC application but for the purpose of this test a console app would have sufficed as well
+-The app is a .NET Web MVC application but for the purpose of this test a regular C#(.NET) console app would have sufficed as well
 
 -Recommended to run with IIS Express
 
