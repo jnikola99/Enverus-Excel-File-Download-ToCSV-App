@@ -1,12 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "yqr19GvHcEtQG3C2RQWoqjtCIcARfj70MJl3nFdRmmpi46QUGKN0Ot7yPpVsB5MAyTjdFsv5+xZZaMG9HTliNA==",
+  "dgSpecHash": "eYzHf2/Y2kwmRI+dkEQG66w2SyTJB0GRfTzPhBa8yaQXTJpXOpeak2zz548AIBxtmCiW9mwJF/Pp+BP2SwubTw==",
   "success": true,
   "projectFilePath": "C:\\Users\\NIKOLA\\source\\repos\\WebScrape\\WebScrape\\WebScrape.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\NIKOLA\\.nuget\\packages\\htmlagilitypack.netcore\\1.5.0.1\\htmlagilitypack.netcore.1.5.0.1.nupkg.sha512",
     "C:\\Users\\NIKOLA\\.nuget\\packages\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",
     "C:\\Users\\NIKOLA\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
+    "C:\\Users\\NIKOLA\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
+    "C:\\Users\\NIKOLA\\.nuget\\packages\\syncfusion.compression.net.core\\20.4.0.38\\syncfusion.compression.net.core.20.4.0.38.nupkg.sha512",
+    "C:\\Users\\NIKOLA\\.nuget\\packages\\syncfusion.ej2.aspnet.core\\20.4.0.38\\syncfusion.ej2.aspnet.core.20.4.0.38.nupkg.sha512",
+    "C:\\Users\\NIKOLA\\.nuget\\packages\\syncfusion.licensing\\20.4.0.38\\syncfusion.licensing.20.4.0.38.nupkg.sha512",
+    "C:\\Users\\NIKOLA\\.nuget\\packages\\syncfusion.xlsio.net.core\\20.4.0.38\\syncfusion.xlsio.net.core.20.4.0.38.nupkg.sha512",
     "C:\\Users\\NIKOLA\\.nuget\\packages\\system.collections\\4.0.11\\system.collections.4.0.11.nupkg.sha512",
     "C:\\Users\\NIKOLA\\.nuget\\packages\\system.diagnostics.debug\\4.0.11\\system.diagnostics.debug.4.0.11.nupkg.sha512",
     "C:\\Users\\NIKOLA\\.nuget\\packages\\system.globalization\\4.0.11\\system.globalization.4.0.11.nupkg.sha512",

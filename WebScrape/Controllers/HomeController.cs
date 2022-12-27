@@ -7,6 +7,8 @@ using WebScrape.Models;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 
+using Syncfusion.XlsIO;
+using static System.Net.Mime.MediaTypeNames;
 using HtmlAgilityPack;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -53,8 +55,11 @@ namespace WebScrape.Controllers
             var request2 = makeRequest(trueUrl, 50000);
             var responseStream2 = await request2.GetResponseAsync();
             var stream2 = responseStream2.GetResponseStream();
-            FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
-            stream2.CopyTo(fileStream);
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            {
+                stream2.CopyTo(fileStream);
+            }
+            
         }
 
         private static async Task<string> getUrlOfFileAsync(string url)
@@ -71,17 +76,56 @@ namespace WebScrape.Controllers
             return fileUrl;
         }
 
+        private static void modifyToLast2YearsAndSaveAsCSV(string filePath)
+        {
+            using (ExcelEngine engine = new())
+            {
+                IApplication excelApp = engine.Excel;
+                excelApp.DefaultVersion = ExcelVersion.Excel2016;
+                excelApp.RangeIndexerMode = ExcelRangeIndexerMode.Relative;
+                //Open file
+                FileStream fileStream = new(filePath, FileMode.Open, FileAccess.Read);
+
+                IWorkbook workbook = excelApp.Workbooks.Open(fileStream);
+
+                var worksheet = workbook.Worksheets[0];
+                worksheet.DeleteRow(1, 6);
+                worksheet.DeleteRow(29, 690);
+
+
+                fileStream.Close();
+
+                /* Stream stream = File.Create(Path.GetFullPath(@"C:\temp\new.csv"));
+
+                 workbook.SaveAs(stream);
+                 stream.Dispose();*/
+                string value = @"C:\temp\new.csv";
+                using (FileStream fs = new(value, FileMode.Create))
+                {
+                    worksheet.SaveAs(fs, ",");
+                }
+
+
+            }
+        }
+
         public async Task<IActionResult> Index()
         {
             string url = "https://bakerhughesrigcount.gcs-web.com/intl-rig-count";
             string filePath = @"C:\temp\myfile.xlsx";
-          
+         
+            //Free licence of Syncfusion package
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBaFt/QHRqVVhjVFpFdEBBXHxAd1p/VWJYdVt5flBPcDwsT3RfQF9iS3xSdEVnW39ed3ZSRg==;Mgo+DSMBMAY9C3t2VVhkQlFadVdJXGFWfVJpTGpQdk5xdV9DaVZUTWY/P1ZhSXxRd0dhWH1edHZVRmdbUUQ=\r\n");
+            
+            
             string fileUrl = await getUrlOfFileAsync(url);
 
             string trueUrl = relativeToAbsolute(url, fileUrl);
 
             await downloadFileAndSaveToLocalDiskAsync(trueUrl, filePath);
            
+            modifyToLast2YearsAndSaveAsCSV(filePath);
+
             return View();
         }
 

@@ -26,3 +26,9 @@ C:\Users\NIKOLA\source\repos\WebScrape\WebScrape\obj\Debug\net6.0\refint\WebScra
 C:\Users\NIKOLA\source\repos\WebScrape\WebScrape\obj\Debug\net6.0\WebScrape.pdb
 C:\Users\NIKOLA\source\repos\WebScrape\WebScrape\obj\Debug\net6.0\WebScrape.genruntimeconfig.cache
 C:\Users\NIKOLA\source\repos\WebScrape\WebScrape\obj\Debug\net6.0\ref\WebScrape.dll
+C:\Users\NIKOLA\source\repos\WebScrape\WebScrape\bin\Debug\net6.0\Syncfusion.Licensing.dll
+C:\Users\NIKOLA\source\repos\WebScrape\WebScrape\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\NIKOLA\source\repos\WebScrape\WebScrape\bin\Debug\net6.0\Syncfusion.Compression.Portable.dll
+C:\Users\NIKOLA\source\repos\WebScrape\WebScrape\bin\Debug\net6.0\Syncfusion.EJ2.dll
+C:\Users\NIKOLA\source\repos\WebScrape\WebScrape\bin\Debug\net6.0\Syncfusion.XlsIO.Portable.dll
+C:\Users\NIKOLA\source\repos\WebScrape\WebScrape\obj\Debug\net6.0\WebScrape.MvcApplicationPartsAssemblyInfo.cs
