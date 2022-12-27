@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net;
 using WebScrape.Models;
-using System.Linq;
-using Microsoft.Extensions.Logging;
 
 using Syncfusion.XlsIO;
-using static System.Net.Mime.MediaTypeNames;
 using HtmlAgilityPack;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using System.Text;
-using System.IO;
 
 namespace WebScrape.Controllers
 {
@@ -50,23 +40,27 @@ namespace WebScrape.Controllers
             return req;
         }
 
+        private static async Task<Stream> getStreamFromRequest(string trueUrl)
+        {
+            var request = makeRequest(trueUrl, 50000);
+            var responseStream = await request.GetResponseAsync();
+            var stream = responseStream.GetResponseStream();
+            return stream;
+        } 
+
         private static async Task downloadFileAndSaveToLocalDiskAsync(string trueUrl,string filePath)
         {
-            var request2 = makeRequest(trueUrl, 50000);
-            var responseStream2 = await request2.GetResponseAsync();
-            var stream2 = responseStream2.GetResponseStream();
+            Stream stream = await getStreamFromRequest(trueUrl);
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
             {
-                stream2.CopyTo(fileStream);
+                stream.CopyTo(fileStream);
             }
             
         }
 
         private static async Task<string> getUrlOfFileAsync(string url)
         {
-            var request = makeRequest(url, 50000);
-            var responseStream = await request.GetResponseAsync();
-            var stream = responseStream.GetResponseStream();
+            Stream stream = await getStreamFromRequest(url);
             StreamReader streamReader = new StreamReader(stream);
             string html = streamReader.ReadToEnd();
             HtmlDocument doc = new HtmlDocument();
@@ -95,10 +89,6 @@ namespace WebScrape.Controllers
 
                 fileStream.Close();
 
-                /* Stream stream = File.Create(Path.GetFullPath(@"C:\temp\new.csv"));
-
-                 workbook.SaveAs(stream);
-                 stream.Dispose();*/
                 string value = @"C:\temp\new.csv";
                 using (FileStream fs = new(value, FileMode.Create))
                 {
