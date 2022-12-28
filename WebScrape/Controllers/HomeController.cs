@@ -18,7 +18,7 @@ namespace WebScrape.Controllers
         }
 
         //Returns absolute URL from a base website URL plus relativeUrl to a file or directory and returns as a string
-        private static String relativeToAbsolute(String baseUrl, String relativeUrl)
+        public static String relativeToAbsolute(String baseUrl, String relativeUrl)
         {
             Uri baseUri = new Uri(baseUrl);
             Uri uri = new Uri(baseUri, relativeUrl);
@@ -26,7 +26,7 @@ namespace WebScrape.Controllers
         }
 
         //Makes a Http request for a website with some specific headers we need(otherwise won't work for bakerhughes site)
-        private static HttpWebRequest makeRequest(string url, int timeout)
+        public static HttpWebRequest makeRequest(string url, int timeout)
         {
             //Make request
             HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(url);
@@ -44,7 +44,7 @@ namespace WebScrape.Controllers
         }
 
         //Returns a response stream from a request
-        private static async Task<Stream> getStreamFromRequest(string trueUrl)
+        public static async Task<Stream> getStreamFromRequest(string trueUrl)
         {
             var request = makeRequest(trueUrl, 50000);
             var responseStream = await request.GetResponseAsync();
@@ -53,8 +53,9 @@ namespace WebScrape.Controllers
         } 
 
         //Gets stream of file and saves it to given filePath
-        private static async Task downloadFileAndSaveToLocalDiskAsync(string trueUrl,string filePath)
+        public static async Task downloadFileAndSaveToLocalDiskAsync(string trueUrl,string filePath)
         {
+            Directory.CreateDirectory(@"C:\temp");
             Stream stream = await getStreamFromRequest(trueUrl);
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
             {
@@ -64,7 +65,7 @@ namespace WebScrape.Controllers
         }
 
         //Gets stream of html, loads it to a HtmlAgilityPack.HtmlDocument and then searches for the file we need by title
-        private static async Task<string> getUrlOfFileAsync(string url)
+        public static async Task<string> getUrlOfFileAsync(string url)
         {
             Stream stream = await getStreamFromRequest(url);
             StreamReader streamReader = new StreamReader(stream);
@@ -80,7 +81,7 @@ namespace WebScrape.Controllers
         }
 
         //Opens .xlsx file, modifies to last 2 years and saves as CSV in same directory
-        private static void modifyToLast2YearsAndSaveAsCSV(string filePath)
+        public static void modifyToLast2YearsAndSaveAsCSV(string filePath)
         {
             using (ExcelEngine engine = new())
             {
