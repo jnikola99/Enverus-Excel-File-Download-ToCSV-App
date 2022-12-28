@@ -11,3 +11,5 @@
   1)HtmlAgilityPack.NetCore
   2)Syncfusion.XlsIO.Net.Core
   3)Syncfusion.EJ2.AspNet.Core
+  
+ -IMPORTANT: When the program is ran, the downloaded file and new CSV file is located on C:\temp directory 
